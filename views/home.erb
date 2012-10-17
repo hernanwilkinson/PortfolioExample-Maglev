@@ -1,0 +1,53 @@
+<h1>Accounts</h1>
+<table>
+  <thead>
+  <tr>
+    <td>Number</td>
+    <td>Name</td>
+    <td>Balance</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @portfolioSystem.eachReceptiveAccount do | account | %>
+  <tr>
+    <td><%= account.number %></a></td>
+    <td><a href="<%= self.urlFor(account) %>"><%= account.name %></a></td>
+    <td><%= account.balance %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <form method="post" action="/addAccount">
+      <td><input type="text" name="accountNumber" /></td>
+      <td><input type="text" name="accountName" /></td>
+      <td><input type="submit" name="action" value="Create"></td>
+    </form>
+  </tr>
+  </tbody>
+</table>
+
+<h1>Portfolios</h1>
+<table>
+  <thead>
+  <tr>
+    <td>Number</td>
+    <td>Name</td>
+    <td>Balance</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @portfolioSystem.eachPortfolio do | portfolio | %>
+      <tr>
+        <td><%= portfolio.number %></a></td>
+        <td><a href="<%= self.urlFor(portfolio) %>"><%= portfolio.name %></a></td>
+        <td><%= portfolio.balance %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <form method="post" action="/addPortfolio">
+      <td><input type="text" name="portfolioNumber" /></td>
+      <td><input type="text" name="portfolioName" /></td>
+      <td><input type="submit" name="action" value="Create"></td>
+    </form>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,41 @@
+<h1><%= @currentAccount.name %> (<%= @currentAccount.number %>)</h1>
+<table>
+  <thead>
+  <tr>
+    <td>Date</td>
+    <td>Type</td>
+    <td>Value</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @currentAccount.eachTransaction do |transaction| %>
+  <tr>
+    <td><%= transaction.date %></td>
+    <td><%= transaction.typeDescription %></td>
+    <td><%= transaction.value %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td><%= @currentAccount.balance %></td>
+  </tr>
+  </tbody>
+</table>
+
+<form method="post" action="/registerTransaction">
+  <table>
+    <tbody>
+    <tr>
+      <td>Date:</td>
+      <td><input type="text" name="date" /></td>
+      <td>Amount:</td>
+      <td><input type="text" name="amount" /></td>
+      <td>Instrument:</td>
+      <td><input type="text" name="instrumentName" /></td>
+      <td><input type="submit" name="action" value="Deposit"><input type="submit" name="action" value="Withdraw"></td>
+    </tr>
+    </tbody>
+  </table>
+  <input type="hidden" name="accountNumber" value=<%= @currentAccount.number %>>
+</form>
