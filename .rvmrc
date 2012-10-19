@@ -1,1 +1,1 @@
-rvm use maglev
+rvm use maglev --create
